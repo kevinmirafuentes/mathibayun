@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableHighlight, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableHighlight, Text, Image, View, ImageBackground } from 'react-native';
 import Sound from 'react-native-sound';
 import MainBg from '../assets/img/main.jpg';
+import Plus from '../assets/img/plus.png';
+import Minus from '../assets/img/minus.png';
 
 Sound.setCategory('Playback');
 
@@ -21,16 +23,16 @@ class Home extends Component {
       <View style={styles.container}>
         <ImageBackground source={ MainBg } style={styles.background}>
           <TouchableHighlight 
-            style={ {...styles.button, ...{ backgroundColor: '#197419' }} }
+            style={ styles.button }
             onPress={ () => this.props.navigation.navigate('Practice', { op: '+'}) } 
-            underlayColor='#197419'>
-            <Text style={ { color: '#fff', fontSize: 20 } }>Let's Practice ADDITION (+)</Text>
+            underlayColor='#f7bcc7'>
+            <Image source={ Plus } />
           </TouchableHighlight>
           <TouchableHighlight 
             style={ styles.button }
             onPress={ () => this.props.navigation.navigate('Practice',  { op: '-'}) } 
-            underlayColor='#f70848'>
-            <Text style={ { color: '#fff', fontSize: 20 } }>Let's Practice SUBTRACTION (-)</Text>
+            underlayColor='#f7bcc7'>
+            <Image source={ Minus } />
           </TouchableHighlight>
         </ImageBackground>
       </View>
@@ -45,12 +47,14 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   button: {
-    backgroundColor: '#f43265',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
     margin: 10,
-    height: 100,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
   },
   background: {
     flex: 1,

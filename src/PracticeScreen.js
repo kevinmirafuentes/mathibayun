@@ -30,12 +30,20 @@ class PracticeScreen extends Component {
   initQuestion() {
     let a = Math.floor(Math.random() * 10) + 1;
     let b = Math.floor(Math.random() * 10) + 1;
-    let operator = '+';
+    let operator = this.props.route.params.op;
     let correct;
     let answers = [];
 
     switch (operator) {
-      case '+': 
+      case '-': 
+        if (b > a) {
+          let x = a;
+          a = b;
+          b = x;
+        }
+        correct = a - b;
+        break;
+      default: 
         correct = a + b;
         break;
     }
@@ -190,6 +198,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     width: 100,
     height: 100,
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,

@@ -21,10 +21,16 @@ class Home extends Component {
       <View style={styles.container}>
         <ImageBackground source={ MainBg } style={styles.background}>
           <TouchableHighlight 
+            style={ {...styles.button, ...{ backgroundColor: '#197419' }} }
+            onPress={ () => this.props.navigation.navigate('Practice', { op: '+'}) } 
+            underlayColor='#197419'>
+            <Text style={ { color: '#fff', fontSize: 20 } }>Let's Practice ADDITION (+)</Text>
+          </TouchableHighlight>
+          <TouchableHighlight 
             style={ styles.button }
-            onPress={ () => this.props.navigation.navigate('Practice') } 
+            onPress={ () => this.props.navigation.navigate('Practice',  { op: '-'}) } 
             underlayColor='#f70848'>
-            <Text style={ { color: '#fff', fontSize: 20 } }>Let's Practice</Text>
+            <Text style={ { color: '#fff', fontSize: 20 } }>Let's Practice SUBTRACTION (-)</Text>
           </TouchableHighlight>
         </ImageBackground>
       </View>
@@ -41,8 +47,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#f43265',
     alignItems: 'center',
+    justifyContent: 'center',
     padding: 10,
     margin: 10,
+    height: 100,
   },
   background: {
     flex: 1,

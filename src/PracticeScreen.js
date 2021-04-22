@@ -87,8 +87,10 @@ class PracticeScreen extends Component {
     });
 
     if (a == this.state.correct) {
+      audioCorrect.stop();
       audioCorrect.play();
     } else {
+      audioWrong.stop();
       audioWrong.play();
     }
   }

@@ -90,11 +90,11 @@ class PracticeScreen extends Component {
 
     this.setState({ 
       selected: a, 
-      isCorrect: a == this.state.correct,
-      isEnded: a == this.state.correct,
+      isCorrect: a === this.state.correct,
+      isEnded: a === this.state.correct,
     });
 
-    if (a == this.state.correct) {
+    if (a === this.state.correct) {
       audioCorrect.stop();
       audioCorrect.play();
     } else {
@@ -120,7 +120,7 @@ class PracticeScreen extends Component {
     );
   }
   renderResults() {
-    if (!this.state.selected) 
+    if (this.state.selected === null) 
       return;
 
     let correct = (
@@ -146,7 +146,6 @@ class PracticeScreen extends Component {
     return (
       <View style={ {...styles.results, ...{ flex: 2 }} }>
         { this.state.isCorrect ? correct : wrong }   
-        
       </View>
     )
   }

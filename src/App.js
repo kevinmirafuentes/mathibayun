@@ -20,7 +20,7 @@ class App extends Component {
           <Stack.Screen
             name="Practice"
             component={PracticeScreen}
-            options={{ title: 'Practice' }}
+            options={{ title: 'Let`s Practice' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

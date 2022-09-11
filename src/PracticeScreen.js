@@ -28,25 +28,29 @@ class PracticeScreen extends Component {
     this.setState(this.initQuestion())
   }
   initQuestion() {
-    let a = Math.floor(Math.random() * 10) + 1;
-    let b = Math.floor(Math.random() * 10) + 1;
-    let operator = this.props.route.params.op;
-    let correct;
+    let correct = 0;
     let answers = [];
+    let a, b;
+    let operator = this.props.route.params.op;
 
-    switch (operator) {
-      case '-': 
-        if (b > a) {
-          let x = a;
-          a = b;
-          b = x;
-        }
-        correct = a - b;
-        break;
-      default: 
-        correct = a + b;
-        break;
-    }
+    do {
+      a = Math.floor(Math.random() * 10) + 1;
+      b = Math.floor(Math.random() * 10) + 1;
+
+      switch (operator) {
+        case '-': 
+          if (b > a) {
+            let x = a;
+            a = b;
+            b = x;
+          }
+          correct = a - b;
+          break;
+        default: 
+          correct = a + b;
+          break;
+      }
+    } while (correct > 10);
 
     let randomAnswer = (except) => {
       let ans = Math.floor(Math.random() * 10) + 1;
@@ -132,14 +136,15 @@ class PracticeScreen extends Component {
           style={ styles.buttonNext }
           onPress={ () => this.restart() } 
           underlayColor='#f70848'>
-          <Text style={ { color: '#fff', fontSize: 20 } }>Restart</Text>
+          <Text style={ { color: '#fff', fontSize: 20 } }>Next</Text>
         </TouchableHighlight>
       </View>
     );
 
     let wrong = (
-      <View style={ {...styles.centered, ...{ alignItems: 'center' }} }>
-        <Text style={ styles.textWrong }>Wrong!</Text>
+      <View style={{ alignItems: 'center' }}>
+        <View><Text style={ styles.textWrong }>Wrong!</Text></View>
+        <View style={{ paddingBottom: 10 }}><Text style={{fontSize: 30, color: 'red'}}>Try again.</Text></View>
       </View>
     );
        

@@ -19,20 +19,22 @@ class Home extends Component {
     audioWelcome.play()
   }
   render() {
+    let title1 = 'Addition';
+    let title2 = 'Subtraction';
     return (
       <View style={styles.container}>
         <ImageBackground source={ MainBg } style={styles.background}>
           <TouchableHighlight 
-            style={ styles.button }
+            style={ {...styles.button, ...{ backgroundColor: "#6eb547"}} }
             onPress={ () => this.props.navigation.navigate('Practice', { op: '+'}) } 
             underlayColor='#f7bcc7'>
-            <Image source={ Plus } />
+            <Text style={ styles.title }>{ title1 }</Text>
           </TouchableHighlight>
           <TouchableHighlight 
-            style={ styles.button }
+            style={ {...styles.button, ...{ backgroundColor: "#ff4f4f"}} }
             onPress={ () => this.props.navigation.navigate('Practice',  { op: '-'}) } 
             underlayColor='#f7bcc7'>
-            <Image source={ Minus } />
+            <Text style={ styles.title }>{ title2 }</Text>
           </TouchableHighlight>
         </ImageBackground>
       </View>
@@ -53,14 +55,19 @@ const styles = StyleSheet.create({
     padding: 20,
     margin: 10,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
+    // borderWidth: 1,
+    // borderColor: '#ccc',
   },
   background: {
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center"
   },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white'
+  }
 });
 
 export default Home;
